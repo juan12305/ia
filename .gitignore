@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Datasets - NO SUBIR (demasiado grandes)
+data/raw/
+data/merged/
+data/merged_full/
+data/merged_ultimate/
+data/merged_fracatlas_archive/
+data/Bone-Fracture-detection/
+data/Fracatlas/
+data/archive*
+data/bone*/
+
+# Modelos entrenados - NO SUBIR (archivos grandes)
+models/cnn/
+runs/
+*.pt
+*.pth
+*.onnx
+*.engine
+weights/
+best.pt
+last.pt
+
+# Notebooks temporales
+notebooks/runs/
+
+# Logs
+logs/
+*.log
+*.jsonl
+
+# System files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Cache
+.cache/
+*.cache
