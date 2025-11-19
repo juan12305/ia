@@ -12,7 +12,7 @@ import numpy as np
 
 # Configuración
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = "models/bone_classifier/best_model.pth"
+MODEL_PATH = "models/bone_classifier_v2/best_model.pth"
 
 def create_model(num_classes=2):
     """Crea la arquitectura del modelo."""
@@ -103,7 +103,7 @@ def predict(image):
         else:
             message += "⚠️ **ADVERTENCIA: Baja confianza (<70%)**\n\n"
             message += "La imagen podría ser muy diferente al dataset de entrenamiento.\n"
-            message += "Este modelo fue optimizado para fracturas de tobillo/pie con vista frontal.\n"
+            message += "Este modelo fue entrenado para: tobillo, pie, pierna, mano, cadera, hombro.\n"
             message += "No se recomienda usar esta predicción.\n\n"
 
         # Información técnica
@@ -127,7 +127,7 @@ demo = gr.Interface(
     description="""
     ## Sistema de Detección de Fracturas con Deep Learning
 
-    **Precisión del modelo: 97.23%**
+    **Precisión del modelo: ~98%**
 
     ### Instrucciones:
     1. Sube una imagen de rayos X (formato JPG, PNG, etc.)
@@ -136,11 +136,10 @@ demo = gr.Interface(
 
     ### Información del modelo:
     - Arquitectura: EfficientNetB3
-    - Dataset: 10,581 imágenes de rayos X
+    - Dataset: ~14,664 imágenes de rayos X (2 datasets combinados)
+    - Regiones: Tobillo, pie, pierna, mano, cadera, hombro
     - Entrenado en: RTX 4060
-    - Test Accuracy: 97.23%
-    - Test Precision: 96.69%
-    - Test Recall: 98.13%
+    - Validation Accuracy: ~98%
 
     ⚠️ **Nota importante:** Este sistema es una herramienta de apoyo diagnóstico.
     Siempre consulte con un profesional médico calificado.
@@ -159,7 +158,9 @@ if __name__ == "__main__":
     print("="*70)
     print(f"\nModelo: {MODEL_PATH}")
     print(f"Dispositivo: {device}")
-    print(f"Precisión: 97.23%")
+    print(f"Dataset: ~14,664 imágenes (2 datasets)")
+    print(f"Regiones: Tobillo, pie, pierna, mano, cadera, hombro")
+    print(f"Precisión: ~98%")
     print("\nLa aplicación se abrirá en tu navegador...")
     print("="*70)
 
